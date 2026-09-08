@@ -1,0 +1,2 @@
+websockets>=14,<16
+xknx>=3.0,<4

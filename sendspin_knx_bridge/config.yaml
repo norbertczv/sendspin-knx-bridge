@@ -1,0 +1,32 @@
+name: "Sendspin KNX Bridge"
+version: "0.1.0"
+slug: "sendspin_knx_bridge"
+description: "Music Assistant Sendspin visualizer to KNX HSV bridge"
+url: "https://github.com/norbertczv/sendspin-knx-bridge"
+startup: application
+boot: auto
+init: false
+host_network: true
+arch:
+  - amd64
+  - aarch64
+options:
+  sendspin_url: "ws://music-assistant.local:8927/sendspin"
+  knx_gateway_host: ""
+  knx_gateway_port: 3671
+  hue_address: "3/5/73"
+  saturation_address: "3/5/74"
+  brightness_address: "3/5/28"
+  max_knx_hz: 4
+  brightness_min: 12
+  brightness_max: 65
+schema:
+  sendspin_url: str
+  knx_gateway_host: str
+  knx_gateway_port: port
+  hue_address: str
+  saturation_address: str
+  brightness_address: str
+  max_knx_hz: int
+  brightness_min: int
+  brightness_max: int
