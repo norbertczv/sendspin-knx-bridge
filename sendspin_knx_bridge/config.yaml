@@ -1,32 +1,52 @@
 name: "Sendspin KNX Bridge"
-version: "0.1.0"
+version: "0.2.0"
 slug: "sendspin_knx_bridge"
-description: "Music Assistant Sendspin visualizer to KNX HSV bridge"
+description: "Music Assistant Sendspin visualizer to KNX mood-light bridge"
 url: "https://github.com/norbertczv/sendspin-knx-bridge"
 startup: application
 boot: auto
 init: false
+stage: experimental
 host_network: true
+homeassistant_api: true
 arch:
   - amd64
   - aarch64
 options:
-  sendspin_url: "ws://music-assistant.local:8927/sendspin"
-  knx_gateway_host: ""
+  sendspin_url: "ws://192.168.1.201:8927/sendspin"
+  light_entities: "light.rejtett_vilagitas,light.hangulat_vilagitas"
+  visualizer_rate_hz: 8
+  output_rate_hz: 4
+  brightness_min: 12
+  brightness_max: 65
+  saturation_min: 70
+  saturation_max: 95
+  beat_boost: 12
+  spectrum_bins: 12
+  disable_color_cycle_helper: "input_boolean.hangulatvilagitas_szinjatek"
+  dry_run: true
+  log_level: "INFO"
+  knx_gateway_host: "192.168.1.176"
   knx_gateway_port: 3671
   hue_address: "3/5/73"
   saturation_address: "3/5/74"
   brightness_address: "3/5/28"
-  max_knx_hz: 4
-  brightness_min: 12
-  brightness_max: 65
 schema:
   sendspin_url: str
+  light_entities: str
+  visualizer_rate_hz: int
+  output_rate_hz: int
+  brightness_min: int
+  brightness_max: int
+  saturation_min: int
+  saturation_max: int
+  beat_boost: int
+  spectrum_bins: int
+  disable_color_cycle_helper: str
+  dry_run: bool
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
   knx_gateway_host: str
   knx_gateway_port: port
   hue_address: str
   saturation_address: str
   brightness_address: str
-  max_knx_hz: int
-  brightness_min: int
-  brightness_max: int
